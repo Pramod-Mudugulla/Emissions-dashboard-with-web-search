@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: emissions-dashboard-api
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
